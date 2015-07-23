@@ -6,10 +6,11 @@ from email import parser
 
 user = raw_input("Username: ")
 pw = getpass.getpass()
+
 Mailbox = poplib.POP3_SSL('pop.gmail.com',995)
-Mailbox.user(user) #lord knows why this doesn't work on a mac
-Mailbox.pass_(pw)
-#print Mailbox.stat()
+Mailbox.user(user)
+Mailbox.pass_(pw) 
+
 Mailbox.set_debuglevel(0)
 #Get messages from server:
 numMessages = len(Mailbox.list()[1])
