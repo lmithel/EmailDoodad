@@ -4,10 +4,10 @@ import email
 import getpass
 from email import parser
 
-
+user = raw_input("Username: ")
 pw = getpass.getpass()
 Mailbox = poplib.POP3_SSL('pop.gmail.com',995)
-Mailbox.user('email.filer@gobaci.com') #lord knows why this doesn't work on a mac
+Mailbox.user(user) #lord knows why this doesn't work on a mac
 Mailbox.pass_(pw)
 #print Mailbox.stat()
 Mailbox.set_debuglevel(0)
@@ -18,7 +18,7 @@ messages = [Mailbox.retr(i) for i in range(1, len(Mailbox.list()[1]) + 1)]
 messages = ["\n".join(mssg[1]) for mssg in messages]
 #Parse message intom an email object:
 messages = [parser.Parser().parsestr(mssg) for mssg in messages]
-allowed_mimetypes = ["application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/pdf"]
+allowed_mimetypes = ["application/vnd.openxmlformats-officedocument.wordprocessingml.document","image/jpeg","application/pdf","image/png","application/vnd.ms-excel",]
 for message in messages:
 	if message['subject'] == '':
 		path = 'misc'
