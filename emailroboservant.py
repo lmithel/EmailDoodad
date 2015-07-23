@@ -7,7 +7,7 @@ from email import parser
 
 pw = getpass.getpass()
 Mailbox = poplib.POP3_SSL('pop.gmail.com',995)
-Mailbox.user('recent:xxxx') #lord knows why this doesn't work on a mac
+Mailbox.user('recent:email.filer@gobaci.com') #lord knows why this doesn't work on a mac
 Mailbox.pass_(pw)
 #print Mailbox.stat()
 Mailbox.set_debuglevel(0)
@@ -20,9 +20,7 @@ messages = ["\n".join(mssg[1]) for mssg in messages]
 messages = [parser.Parser().parsestr(mssg) for mssg in messages]
 allowed_mimetypes = ["application/vnd.openxmlformats-officedocument.wordprocessingml.document","application/pdf"]
 for message in messages:
-	print type(message['subject'])
-	print message['subject']
-	if message['subject'] is None:
+	if message['subject'] == '':
 		path = 'misc'
 	else:
 		path = message['subject']
