@@ -7,7 +7,7 @@ from email import parser
 
 pw = getpass.getpass()
 Mailbox = poplib.POP3_SSL('pop.gmail.com',995)
-Mailbox.user('recent:email.filer@gobaci.com') #lord knows why this doesn't work on a mac
+Mailbox.user('email.filer@gobaci.com') #lord knows why this doesn't work on a mac
 Mailbox.pass_(pw)
 #print Mailbox.stat()
 Mailbox.set_debuglevel(0)
