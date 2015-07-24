@@ -5,12 +5,12 @@ import datetime
 import getpass
 from email import parser
 
-#user = raw_input("Username: ")
-#pw = getpass.getpass()
+user = raw_input("Username: ")
+pw = getpass.getpass()
 
 Mailbox = poplib.POP3_SSL('pop.gmail.com',995)
-Mailbox.user('recent:email.filer@gobaci.com')
-Mailbox.pass_('Filesfordays') 
+Mailbox.user(user)
+Mailbox.pass_(pw) 
 
 Mailbox.set_debuglevel(0)
 #Get messages from server:
